@@ -13,7 +13,7 @@ export function PasswordComplexityValidator(
     /([a-z]){2,}/.test(control.value) &&
     /([$!#@%]){2,}/.test(control.value) &&
     /([0-9]){2,}/.test(control.value);
-  console.log(valid);
+
   return valid ? null : { complexity: true };
 }
 
