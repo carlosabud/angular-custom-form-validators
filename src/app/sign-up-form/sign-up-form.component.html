@@ -1,3 +1,4 @@
+<!-- A very simple sign up form component -->
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
   <fieldset>
     <legend>Sign up form</legend>
@@ -42,6 +43,8 @@
   </fieldset>
 </form>
 
+<!-- Form error inspector -->
+<!-- use this section to display how errors are set by Angular in the form and form controls (abstract control) -->
 <p>Password Control Errors: {{ password?.errors | json }}</p>
 <p>Confirm Password Control Errors: {{ confirmPassword?.errors | json }}</p>
 <p>FormGroup Errors: {{ form?.errors | json }}</p>
