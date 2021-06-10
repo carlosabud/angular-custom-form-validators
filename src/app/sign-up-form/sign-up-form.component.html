@@ -1,0 +1,47 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <fieldset>
+    <legend>Sign up form</legend>
+    <p>
+      <label for="input-username">Username:</label>
+      <input type="text" id="input-username" formControlName="username" />
+      <ng-container *ngIf="username?.errors && username?.touched">
+        <div class="error">
+          <p *ngIf="username?.errors?.required">Field is required</p>
+        </div>
+      </ng-container>
+    </p>
+    <p>
+      <label for="input-password">Password:</label>
+      <input type="password" id="input-password" formControlName="password" />
+      <ng-container *ngIf="password?.invalid && password?.touched">
+        <div class="error">
+          <p *ngIf="password?.errors?.required">Field is required</p>
+          <p *ngIf="password?.errors?.complexity">
+            Password is not strong enough
+          </p>
+        </div>
+      </ng-container>
+    </p>
+    <p>
+      <label for="input-confirm-password">Confirm Password:</label>
+      <input
+        type="password"
+        id="input-confirm-password"
+        formControlName="confirmPassword"
+      />
+    </p>
+
+    <ng-container *ngIf="confirmPassword?.invalid && confirmPassword?.touched">
+      <div class="error">
+        <p *ngIf="confirmPassword?.errors?.required">Field is required</p>
+      </div>
+    </ng-container>
+    <div class="error" *ngIf="form?.errors?.matching">
+      <p>Passwords do not match.</p>
+    </div>
+  </fieldset>
+</form>
+
+<p>Password Control Errors: {{ password?.errors | json }}</p>
+<p>Confirm Password Control Errors: {{ confirmPassword?.errors | json }}</p>
+<p>FormGroup Errors: {{ form?.errors | json }}</p>
